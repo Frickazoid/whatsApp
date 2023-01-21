@@ -1,12 +1,18 @@
 import './App.css';
 import MainWindow from "./components/MainWindow";
 import './style.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/login";
+
 
 function App() {
   return (
-    <div className="App">
-        <MainWindow/>
-    </div>
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={ <MainWindow/>}/>
+            <Route path="/login" element={<Login/>}/>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
