@@ -10,5 +10,6 @@ function ChatMassage() {
             </div>
         </div>
     );
-
 }
+
+export default ChatMassage
