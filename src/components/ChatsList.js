@@ -3,7 +3,7 @@ import UserInfo from "./UserInfo";
 function ChatsList(){
 
     return (
-        <div>
+        <div className={"chats-list-container"}>
             <div className={`user-info`}>
                 <UserInfo/>
             </div>
@@ -18,7 +18,6 @@ function ChatsList(){
         </div>
 
     );
-
 }
 
 export default ChatsList
