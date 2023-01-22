@@ -1,5 +1,3 @@
-
-//const http = require('http');
 var express = require('express');
 var cors = require('cors');
 const {response} = require("express");
@@ -12,7 +10,7 @@ app.get("/", (req, res, next) => {
     res.json({"message":"Ok"})
 });
 
-app.get('/api/users', async (req, res) => {
+app.get('/api/user/:username', async (req, res) => {
 
     const sqlite3 = require('sqlite3');
     let db = new sqlite3.Database('./AppDB.db', sqlite3.OPEN_READWRITE ,(err) => {
@@ -22,14 +20,14 @@ app.get('/api/users', async (req, res) => {
         console.log('Connected to the db_app database.');
     });
 
-    const sql = `SELECT DISTINCT * FROM users ORDER BY ID`;
-    const params = [];
-    db.all(sql, params, (err, rows) =>{
+    const sql = `SELECT DISTINCT * FROM users where capsName = ?`;
+    const params = [req.params.username];
+    db.all(sql, params, (err, row) =>{
         if (err) {
             res.status(400).json({"error":err.message});
             return;
         }
-        res.json({'massage':'success','data':rows})
+        res.json({'massage':'success','data':row})
     })
     db.close();
 })
@@ -37,3 +35,7 @@ app.get('/api/users', async (req, res) => {
 app.listen(8080, () => {
     console.log(`Example app listening on port ${8080}`)
 })
+
+app.use(function(req, res){
+    res.status(404);
+});
