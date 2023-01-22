@@ -3,27 +3,25 @@ import ChatMassage from "./ChatMassage";
 
 function ChatWindow() {
 
-    function addMassageArrey() {
+    function addMassageArray() {
         let massages = [];
-        for(let i=0;i<20;i++){
+        for(let i=0;i<10;i++){
             massages.push(<ChatMassage/>)}
         return massages
     }
 
-
-    useEffect(() => {},[])
-
     return (
         <div className={`chat-window`}>
             <ul className={`chat-container`}>
-                {addMassageArrey()}
+                {addMassageArray()}
             </ul>
             <div className={`massage-container`}>
                 <label htmlFor="massage">Сообщение</label>
                 <input type="text" id="massage" placeholder="введите текст"/>
+                <button className={`btn-send-massage`}>Send</button>
             </div>
         </div>
     );
 }
 
-                export default ChatWindow;
+export default ChatWindow;
