@@ -1,14 +1,11 @@
 import ChatList from "./ChatsList";
+import ChatWindow from "./ChatWindow";
 function MainWindow(){
 
     return(
         <div className={"main-container"}>
-            <div className={"chats-list-container"}>
-                <ChatList/>
-            </div>
-            <div className={"chat-window"}>
-                Chat
-            </div>
+            <ChatList/>
+            <ChatWindow/>
         </div>
     );
 }
