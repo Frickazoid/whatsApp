@@ -4,7 +4,7 @@ function MainWindow(){
 
     return(
         <div className={"main-container"}>
-            <ChatList />
+            <ChatList/>
             <ChatWindow/>
         </div>
     );

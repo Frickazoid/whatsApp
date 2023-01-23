@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 
-function SignInRegistration({isRegistration}){
+function SignInRegistration({isRegistration, onSignIn}){
 
+    const input = document.getElementById("user-name-input");
     const [label, setLable] = useState(``);
     const [btnLable, setBtnLable] = useState(``);
 
@@ -15,11 +16,15 @@ function SignInRegistration({isRegistration}){
         }
     }, [])
 
+    function onPress({username, type}) {
+        onSignIn({username, type})
+    }
+
     return(
         <div>
             <label>{label}</label>
-            <input type="text" id="user-name" placeholder="login"/>
-            <button className={`btn-sign-in`}>{btnLable}</button>
+            <input type="text" id="user-name-input" placeholder="login"/>
+            <button className={`btn-sign-in`} onClick={() => onPress({username:input.value, type:label})}>{btnLable}</button>
         </div>
     )
 }
